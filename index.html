@@ -1,626 +1,360 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pesantren Ramadhan SD Mentari</title>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
-      body {
-        height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        background: radial-gradient(
-          ellipse at bottom,
-          #0d1b2a 0%,
-          #000814 60%,
-          #000000 100%
-        );
-        color: white;
-        overflow: hidden;
-        position: relative;
-      }
-
-      /* ================= TOP SECTION ================= */
-
-      .top-section {
-        padding: 50px 40px 0 40px;
-        position: relative;
-        z-index: 3;
-      }
-
-      .header {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-
-      .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 25px;
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(15px);
-        padding: 18px;
-        border-radius: 18px;
-        margin-right: 280px;
-        margin-left: 280px;
-      }
-
-      .header-text {
-        text-align: center;
-      }
-
-      .logo {
-        height: 100%;
-        max-height: 120px;
-        object-fit: contain;
-      }
-
-      /* Responsive agar rapi di layar kecil */
-      @media (max-width: 768px) {
-        .header-content {
-          flex-direction: column;
-        }
-
-        .logo {
-          height: clamp(60px, 8vw, 120px);
-          object-fit: contain;
-        }
-      }
-
-      .header h1 {
-        font-size: clamp(28px, 4vw, 48px);
-        color: #ff0037;
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-      }
-
-      .header h2 {
-        font-weight: 400;
-        margin: 5px 0;
-      }
-
-      .header h3 {
-        color: #90ee90;
-      }
-
-      /* ================= DASHBOARD ================= */
-
-      /* Container tombol utama */
-      .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-      }
-
-      /* Container masing-masing tombol */
-      .button-container > div {
-        position: relative; /* penting agar dropdown absolute mengikuti tombol */
-      }
-
-      /* Tombol utama */
-      .main-btn {
-        padding: 12px 20px;
-        background: #2c7be5;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-
-      .main-btn:hover {
-        background: #1a5dc9;
-        transform: translateY(-6px);
-      }
-
-      /* Container dropdown */
-      .dropdown {
-        position: absolute; /* agar tidak mendorong foto */
-        top: 100%; /* tepat di bawah tombol */
-        left: 0;
-        margin-top: 8px;
-        display: none;
-        flex-direction: column;
-        gap: 8px;
-        background: rgba(0, 0, 0, 0.85);
-        padding: 10px;
-        border-radius: 8px;
-        backdrop-filter: blur(10px);
-        z-index: 10; /* lebih tinggi dari foto */
-      }
-
-      /* Tombol dropdown */
-      .sub-btn {
-        padding: 8px 15px;
-        background: #ffffff;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-
-      .sub-btn:hover {
-        background: #ddd;
-        transform: translateY(-6px);
-      }
-
-      /* ================= FOTO SECTION ================= */
-
-      .foto-section {
-        position: relative;
-        width: 100%;
-        flex: 1;
-        min-height: 250px;
-        overflow: hidden;
-        margin-top: -60px;
-        z-index: 1; /* lebih kecil dari dropdown */
-      }
-
-      .top-section {
-        position: relative;
-        z-index: 3;
-      }
-
-      .foto-section img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-      }
-
-      /* 🌙 TEKS SELAMAT DATANG */
-      .welcome-text {
-        position: absolute;
-        top: 70px; /* 40px dari tepi atas foto */
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        font-size: clamp(18px, 3vw, 36px);
-        font-weight: 700;
-        color: #f5f7f9;
-        letter-spacing: 2px;
-        text-shadow:
-          0 0 10px rgba(55, 85, 255, 0.9),
-          0 0 20px rgba(0, 64, 255, 0.359),
-          0 0 30px rgba(255, 255, 255, 0.4);
-        z-index: 3;
-        padding: 7px 20px;
-        backdrop-filter: blur(4px);
-      }
-
-      .welcome-text div {
-        margin: 2px 0;
-      }
-
-      .welcome-text .line1 {
-        font-size: clamp(24px, 4vw, 48px);
-        font-weight: 800;
-      }
-
-      .welcome-text .line2 {
-        font-size: clamp(20px, 2.5vw, 36px);
-        font-weight: 800;
-      }
-
-      .welcome-text .line3 {
-        font-size: clamp(14px, 2vw, 22px);
-        font-weight: 400;
-        letter-spacing: 3px;
-      }
-
-      /* Gradient atas */
-      .foto-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 65%;
-        background: linear-gradient(
-          to bottom,
-          #000000 0%,
-          #000814 30%,
-          rgba(0, 8, 20, 0.85) 55%,
-          rgba(0, 8, 20, 0.4) 75%,
-          rgba(0, 8, 20, 0) 100%
-        );
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      /* Gradient bawah */
-      .foto-section::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 40%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(2, 27, 43, 0.6) 50%,
-          rgba(2, 27, 43, 1) 100%
-        );
-        pointer-events: none;
-      }
-
-      /* ================= ANIMASI BINTANG ================= */
-
-      .star {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: white;
-        border-radius: 50%;
-        box-shadow:
-          0 0 8px rgba(255, 255, 255, 0.9),
-          0 0 15px rgba(173, 216, 230, 0.7);
-        animation: blink 2s infinite alternate;
-      }
-
-      @keyframes blink {
-        from {
-          opacity: 0.3;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      .crescent {
-        position: absolute;
-        font-size: 20px;
-        animation: float 15s linear infinite;
-        opacity: 0.7;
-      }
-
-      @keyframes float {
-        from {
-          transform: translateY(100vh);
-        }
-        to {
-          transform: translateY(-10vh);
-        }
-      }
-
-      body::before {
-        content: "";
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        background:
-          radial-gradient(
-            circle at 20% 30%,
-            rgba(255, 255, 255, 0.05),
-            transparent 40%
-          ),
-          radial-gradient(
-            circle at 80% 70%,
-            rgba(173, 216, 230, 0.05),
-            transparent 40%
-          ),
-          radial-gradient(
-            circle at 50% 50%,
-            rgba(255, 255, 255, 0.03),
-            transparent 60%
-          );
-        animation: rotateSky 120s linear infinite;
-      }
-
-      @keyframes rotateSky {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* ================= BUTTON ================= */
-
-      .music-btn,
-      .fullscreen-btn {
-        position: fixed;
-        bottom: 20px;
-        padding: 10px 15px;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: 600;
-        border: none;
-        transition: 0.3s;
-        z-index: 5;
-      }
-
-      .music-btn {
-        right: 20px;
-        background: #0088ff8d;
-        color: #fafffc;
-      }
-
-      .fullscreen-btn {
-        left: 20px;
-        background: #0088ff8d;
-        color: #fafffc;
-      }
-
-      .music-btn:hover,
-      .fullscreen-btn:hover {
-        transform: scale(1.08);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      }
-
-      /* ================= VIDEO FULLSCREEN ================= */
-
-      .video-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: black;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-      }
-
-      .video-overlay video {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-
-      .back-btn {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        padding: 10px 18px;
-        background: rgba(0, 136, 255, 0.8);
-        color: white;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: bold;
-        z-index: 10000;
-        transition: 0.3s;
-      }
-
-      .back-btn:hover {
-        transform: scale(1.08);
-        background: #0066cc;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="top-section">
-      <div class="header">
-        <div class="header-content">
-          <img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokiri.png" alt="Logo Kiri" class="logo" />
-
-          <div class="header-text">
-            <h1>SD NEGERI 75 PALEMBANG</h1>
-            <h2><i>"SEKOLAH TEPAT UNTUK ANAK HEBAT"</i></h2>
-          </div>
-
-          <img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokanan.png" alt="Logo Kanan" class="logo" />
-        </div>
-      </div>
-
-      <div class="button-container">
-        <!-- Buat 7 tombol -->
-        <div>
-          <button class="main-btn" onclick="toggleDropdown(1)">
-            <h4>Kamis, 5 Maret 2026</h4>
-            <p>Pembukaan</p>
-          </button>
-          <div class="dropdown" id="dropdown1">
-            <button class="sub-btn" onclick="openVideo('video1.mp4')">
-              Film <i>"Children of Heaven"</i>
-            </button>
-            <button class="sub-btn">Quiz</button>
-          </div>
-        </div>
-
-        <div>
-          <button class="main-btn" onclick="toggleDropdown(2)">
-            <h4>Jumat, 6 Maret 2026</h4>
-            <p>Lomba Azan</p>
-          </button>
-          <div class="dropdown" id="dropdown2">
-            <button class="sub-btn">Sub 2A</button>
-            <button class="sub-btn">Sub 2B</button>
-          </div>
-        </div>
-
-        <div>
-          <button class="main-btn" onclick="toggleDropdown(3)">
-            <h4>Sabtu, 7 Maret 2026</h4>
-            <p>Lomba Menyanyi Islami</p>
-          </button>
-          <div class="dropdown" id="dropdown3">
-            <button class="sub-btn">Sub 3A</button>
-            <button class="sub-btn">Sub 3B</button>
-          </div>
-        </div>
-
-        <div>
-          <button class="main-btn" onclick="toggleDropdown(4)">
-            <h4>Senin, 9 Maret 2026</h4>
-            <p>Lomba Puisi Islami</p>
-          </button>
-          <div class="dropdown" id="dropdown4">
-            <button class="sub-btn">Sub 4A</button>
-            <button class="sub-btn">Sub 4B</button>
-          </div>
-        </div>
-
-        <div>
-          <button class="main-btn" onclick="toggleDropdown(5)">
-            <h4>Selasa, 10 Maret 2026</h4>
-            <p>Lomba Dai Cilik</p>
-          </button>
-          <div class="dropdown" id="dropdown5">
-            <button class="sub-btn">Sub 5A</button>
-            <button class="sub-btn">Sub 5B</button>
-          </div>
-        </div>
-
-        <div>
-          <button class="main-btn" onclick="toggleDropdown(6)">
-            <h4>Rabu, 11 Maret 2026</h4>
-            <p>Lomba Mewarnai</p>
-          </button>
-          <div class="dropdown" id="dropdown6">
-            <button class="sub-btn">Sub 6A</button>
-            <button class="sub-btn">Sub 6B</button>
-          </div>
-        </div>
-
-        <div>
-          <button class="main-btn" onclick="toggleDropdown(7)">
-            <h4>Kamis, 12 Maret 2026</h4>
-            <p>Peringatan Nuzulul Qur'an</p>
-          </button>
-          <div class="dropdown" id="dropdown7">
-            <button class="sub-btn">Sub 7A</button>
-            <button class="sub-btn">Sub 7B</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="foto-section">
-      <div class="welcome-text">
-        <div class="line1">SELAMAT DATANG</div>
-        <div class="line2">PESERTA PESANTREN RAMADHAN 1447 H</div>
-        <div class="line3">
-          <i>“Membentuk Generasi Cerdas dan Berakhlak Al-Qur’an”</i>
-        </div>
-        <div class="line3"><i>5 - 12 MARET 2026</i></div>
-      </div>
-      <img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/fotobg.png" alt="Background" />
-    </div>
-
-    <audio autoplay loop>
-      <source src="https://mcnplg.github.io/pesantrenramadhan/assets/audio/ramadhan.mp3" type="audio/mp3" />
-    </audio>
-
-    <button
-      class="music-btn"
-      onclick="
-        document.querySelector('audio').paused
-          ? document.querySelector('audio').play()
-          : document.querySelector('audio').pause()
-      "
-    >
-      🔊 Musik
-    </button>
-
-    <button
-      class="fullscreen-btn"
-      onclick="toggleFullscreen()"
-      id="fullscreenBtn"
-    >
-      ⛶ Fullscreen
-    </button>
-
-    <script>
-      for (let i = 0; i < 40; i++) {
-        let star = document.createElement("div");
-        star.className = "star";
-        star.style.top = Math.random() * 100 + "%";
-        star.style.left = Math.random() * 100 + "%";
-        star.style.animationDuration = Math.random() * 3 + 1 + "s";
-        document.body.appendChild(star);
-      }
-
-      for (let i = 0; i < 10; i++) {
-        let moon = document.createElement("div");
-        moon.className = "crescent";
-        moon.innerHTML = "☾";
-        moon.style.left = Math.random() * 100 + "%";
-        moon.style.animationDuration = Math.random() * 10 + 10 + "s";
-        document.body.appendChild(moon);
-      }
-
-      function toggleFullscreen() {
-        const btn = document.getElementById("fullscreenBtn");
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen();
-          btn.innerHTML = "❎ Exit";
-        } else {
-          document.exitFullscreen();
-          btn.innerHTML = "⛶ Fullscreen";
-        }
-      }
-
-      function toggleDropdown(num) {
-        let selected = document.getElementById("dropdown" + num);
-
-        // Jika sedang terbuka → tutup
-        if (selected.style.display === "flex") {
-          selected.style.display = "none";
-        } else {
-          // Tutup semua dulu
-          for (let i = 1; i <= 7; i++) {
-            document.getElementById("dropdown" + i).style.display = "none";
-          }
-
-          // Buka yang dipilih
-          selected.style.display = "flex";
-        }
-      }
-
-      function openVideo(videoSrc) {
-        const overlay = document.getElementById("videoOverlay");
-        const video = document.getElementById("mainVideo");
-
-        video.src = videoSrc;
-        overlay.style.display = "flex";
-
-        video.play();
-      }
-
-      function closeVideo() {
-        const overlay = document.getElementById("videoOverlay");
-        const video = document.getElementById("mainVideo");
-
-        video.pause();
-        video.currentTime = 0;
-        overlay.style.display = "none";
-      }
-    </script>
-
-    <!-- ================= VIDEO OVERLAY ================= -->
-    <div class="video-overlay" id="videoOverlay">
-      <video id="mainVideo" controls>
-        <source src="https://mcnplg.github.io/pesantrenramadhan/assets/video/video1.mp4" type="video/mp4" />
-        Browser tidak mendukung video.
-      </video>
-
-      <button class="back-btn" onclick="closeVideo()">
-        ⬅ Kembali ke Halaman Utama
-      </button>
-
-    </div>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pesantren Ramadhan SD Mentari</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background: radial-gradient(ellipse at bottom,#0d1b2a 0%,#000814 60%,#000000 100%);
+  color:white;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ================= HEADER ================= */
+
+.top-section{
+  padding:40px;
+  position:relative;
+  z-index:3;
+}
+
+.header-content{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(15px);
+  padding:25px;
+  border-radius:25px;
+  max-width:1600px;
+  margin:auto;
+}
+
+.logo{
+  max-height:140px;
+  object-fit:contain;
+}
+
+.header-text{
+  text-align:center;
+}
+
+.header h1{
+  font-size:clamp(32px,4vw,64px);
+  color:#ff0037;
+  text-shadow:0 0 20px rgba(255,215,0,0.6);
+}
+
+.header h2{
+  font-weight:400;
+}
+
+/* ================= BUTTONS ================= */
+
+.button-container{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:25px;
+  margin-top:30px;
+}
+
+.button-container>div{
+  position:relative;
+}
+
+.main-btn{
+  padding:25px 40px;
+  background:#2c7be5;
+  color:white;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+  min-width:240px;
+}
+
+.main-btn h4{
+  font-size:20px;
+}
+
+.main-btn p{
+  font-size:18px;
+}
+
+.main-btn:hover{
+  background:#1a5dc9;
+  transform:translateY(-4px);
+}
+
+/* Dropdown */
+
+.dropdown{
+  position:absolute;
+  top:110%;
+  left:0;
+  display:none;
+  flex-direction:column;
+  gap:12px;
+  background:rgba(0,0,0,0.9);
+  padding:18px;
+  border-radius:14px;
+  z-index:100;
+}
+
+.sub-btn{
+  padding:16px 25px;
+  font-size:18px;
+  background:#ffffff;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+/* ================= FOTO ================= */
+
+.foto-section{
+  position:relative;
+  flex:1;
+  min-height:450px;
+  overflow:hidden;
+}
+
+.foto-section img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.welcome-text{
+  position:absolute;
+  top:90px;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  padding:20px 50px;
+  border-radius:25px;
+  backdrop-filter:blur(5px);
+  text-shadow:0 0 15px rgba(0,0,0,0.8);
+}
+
+.welcome-text .line1{
+  font-size:clamp(36px,4vw,60px);
+  font-weight:800;
+}
+
+.welcome-text .line2{
+  font-size:clamp(28px,3vw,42px);
+  font-weight:700;
+}
+
+.welcome-text .line3{
+  font-size:clamp(18px,2vw,26px);
+}
+
+/* ================= BINTANG ================= */
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  animation:blink 2s infinite alternate;
+}
+
+@keyframes blink{
+  from{opacity:0.3;}
+  to{opacity:1;}
+}
+
+/* ================= CONTROL BUTTON ================= */
+
+.music-btn,
+.fullscreen-btn{
+  position:fixed;
+  bottom:25px;
+  padding:15px 25px;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:600;
+  border:none;
+  transition:0.3s;
+  z-index:5;
+  font-size:18px;
+}
+
+.music-btn{
+  right:25px;
+  background:#0088ff8d;
+  color:#fff;
+}
+
+.fullscreen-btn{
+  left:25px;
+  background:#0088ff8d;
+  color:#fff;
+}
+
+/* ================= VIDEO OVERLAY ================= */
+
+.video-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.video-overlay video{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.back-btn{
+  position:absolute;
+  bottom:25px;
+  left:25px;
+  padding:15px 30px;
+  background:rgba(0,136,255,0.8);
+  color:white;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-section">
+<div class="header">
+<div class="header-content">
+<img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokiri.png" class="logo">
+<div class="header-text">
+<h1>SD NEGERI 75 PALEMBANG</h1>
+<h2><i>"SEKOLAH TEPAT UNTUK ANAK HEBAT"</i></h2>
+</div>
+<img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokanan.png" class="logo">
+</div>
+</div>
+
+<div class="button-container">
+
+<div>
+<button class="main-btn" onclick="toggleDropdown(1)">
+<h4>Kamis, 5 Maret 2026</h4>
+<p>Pembukaan</p>
+</button>
+<div class="dropdown" id="dropdown1">
+<button class="sub-btn" onclick="openVideo('https://mcnplg.github.io/pesantrenramadhan/assets/video/video1.mp4')">
+Film "Children of Heaven"
+</button>
+<button class="sub-btn">Quiz</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="foto-section">
+<div class="welcome-text">
+<div class="line1">SELAMAT DATANG</div>
+<div class="line2">PESERTA PESANTREN RAMADHAN 1447 H</div>
+<div class="line3"><i>“Membentuk Generasi Cerdas dan Berakhlak Al-Qur’an”</i></div>
+<div class="line3"><i>5 - 12 MARET 2026</i></div>
+</div>
+<img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/fotobg.png">
+</div>
+
+<audio autoplay loop>
+<source src="https://mcnplg.github.io/pesantrenramadhan/assets/audio/ramadhan.mp3" type="audio/mp3">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🔊 Musik</button>
+<button class="fullscreen-btn" onclick="toggleFullscreen()" id="fullscreenBtn">⛶ Fullscreen</button>
+
+<div class="video-overlay" id="videoOverlay">
+<video id="mainVideo" controls></video>
+<button class="back-btn" onclick="closeVideo()">⬅ Kembali</button>
+</div>
+
+<script>
+for(let i=0;i<40;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"%";
+star.style.left=Math.random()*100+"%";
+star.style.animationDuration=Math.random()*3+1+"s";
+document.body.appendChild(star);
+}
+
+function toggleDropdown(num){
+let selected=document.getElementById("dropdown"+num);
+if(selected.style.display==="flex"){
+selected.style.display="none";
+}else{
+document.querySelectorAll(".dropdown").forEach(d=>d.style.display="none");
+selected.style.display="flex";
+}
+}
+
+function toggleFullscreen(){
+const btn=document.getElementById("fullscreenBtn");
+if(!document.fullscreenElement){
+document.documentElement.requestFullscreen();
+btn.innerHTML="❎ Exit";
+}else{
+document.exitFullscreen();
+btn.innerHTML="⛶ Fullscreen";
+}
+}
+
+function toggleMusic(){
+let audio=document.querySelector("audio");
+audio.paused?audio.play():audio.pause();
+}
+
+function openVideo(src){
+const overlay=document.getElementById("videoOverlay");
+const video=document.getElementById("mainVideo");
+video.src=src;
+overlay.style.display="flex";
+video.play();
+}
+
+function closeVideo(){
+const overlay=document.getElementById("videoOverlay");
+const video=document.getElementById("mainVideo");
+video.pause();
+video.currentTime=0;
+overlay.style.display="none";
+}
+</script>
+
+</body>
 </html>
-
-
-
