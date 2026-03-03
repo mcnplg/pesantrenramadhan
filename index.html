@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pesantren Ramadhan SD Mentari</title>
+<title>Pesantren Ramadhan SD Negeri 75 Palembang</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
 
 <style>
 *{
@@ -16,63 +16,58 @@
 }
 
 body{
-  min-height:100vh;
+  height:100vh;
   display:flex;
   flex-direction:column;
-  background: radial-gradient(ellipse at bottom,#0d1b2a 0%,#000814 60%,#000000 100%);
+  background: radial-gradient(circle at bottom,#0d1b2a 0%,#000814 70%,#000000 100%);
   color:white;
-  overflow-x:hidden;
-  position:relative;
+  overflow:hidden;
 }
 
 /* ================= HEADER ================= */
 
 .top-section{
-  padding:40px;
-  position:relative;
-  z-index:3;
+  padding:60px 100px 20px 100px;
 }
 
 .header-content{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:40px;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(15px);
-  padding:25px;
-  border-radius:25px;
-  max-width:1600px;
-  margin:auto;
+  gap:80px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  padding:40px 60px;
+  border-radius:40px;
 }
 
 .logo{
-  max-height:140px;
-  object-fit:contain;
+  height:180px;
 }
 
 .header-text{
   text-align:center;
 }
 
-.header h1{
-  font-size:clamp(32px,4vw,64px);
+.header-text h1{
+  font-size:80px;
+  font-weight:800;
   color:#ff0037;
-  text-shadow:0 0 20px rgba(255,215,0,0.6);
+  text-shadow:0 0 30px rgba(255,215,0,0.7);
 }
 
-.header h2{
+.header-text h2{
+  font-size:32px;
   font-weight:400;
 }
 
-/* ================= BUTTONS ================= */
+/* ================= BUTTON GRID ================= */
 
 .button-container{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:25px;
-  margin-top:30px;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:50px;
+  margin-top:60px;
 }
 
 .button-container>div{
@@ -80,28 +75,29 @@ body{
 }
 
 .main-btn{
-  padding:25px 40px;
-  background:#2c7be5;
-  color:white;
+  width:100%;
+  padding:60px 20px;
+  background:linear-gradient(145deg,#2c7be5,#1a5dc9);
   border:none;
-  border-radius:16px;
+  border-radius:35px;
+  color:white;
   cursor:pointer;
-  font-weight:bold;
   transition:0.3s;
-  min-width:240px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
 .main-btn h4{
-  font-size:20px;
+  font-size:30px;
+  font-weight:700;
 }
 
 .main-btn p{
-  font-size:18px;
+  font-size:26px;
+  margin-top:10px;
 }
 
 .main-btn:hover{
-  background:#1a5dc9;
-  transform:translateY(-4px);
+  transform:translateY(-8px);
 }
 
 /* Dropdown */
@@ -110,31 +106,29 @@ body{
   position:absolute;
   top:110%;
   left:0;
+  right:0;
   display:none;
   flex-direction:column;
-  gap:12px;
-  background:rgba(0,0,0,0.9);
-  padding:18px;
-  border-radius:14px;
+  gap:20px;
+  background:rgba(0,0,0,0.95);
+  padding:30px;
+  border-radius:25px;
   z-index:100;
 }
 
 .sub-btn{
-  padding:16px 25px;
-  font-size:18px;
-  background:#ffffff;
+  padding:25px;
+  font-size:24px;
   border:none;
-  border-radius:12px;
+  border-radius:20px;
   cursor:pointer;
 }
 
 /* ================= FOTO ================= */
 
 .foto-section{
-  position:relative;
   flex:1;
-  min-height:450px;
-  overflow:hidden;
+  position:relative;
 }
 
 .foto-section img{
@@ -145,82 +139,54 @@ body{
 
 .welcome-text{
   position:absolute;
-  top:90px;
+  top:120px;
   left:50%;
   transform:translateX(-50%);
   text-align:center;
-  padding:20px 50px;
-  border-radius:25px;
-  backdrop-filter:blur(5px);
-  text-shadow:0 0 15px rgba(0,0,0,0.8);
+  padding:40px 80px;
+  border-radius:40px;
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.3);
 }
 
 .welcome-text .line1{
-  font-size:clamp(36px,4vw,60px);
+  font-size:80px;
   font-weight:800;
 }
 
 .welcome-text .line2{
-  font-size:clamp(28px,3vw,42px);
-  font-weight:700;
+  font-size:50px;
+  margin-top:10px;
 }
 
 .welcome-text .line3{
-  font-size:clamp(18px,2vw,26px);
+  font-size:28px;
+  margin-top:15px;
 }
 
-/* ================= BINTANG ================= */
-
-.star{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:white;
-  border-radius:50%;
-  animation:blink 2s infinite alternate;
-}
-
-@keyframes blink{
-  from{opacity:0.3;}
-  to{opacity:1;}
-}
-
-/* ================= CONTROL BUTTON ================= */
+/* ================= CONTROL ================= */
 
 .music-btn,
 .fullscreen-btn{
   position:fixed;
-  bottom:25px;
-  padding:15px 25px;
-  border-radius:30px;
-  cursor:pointer;
-  font-weight:600;
+  bottom:40px;
+  padding:20px 40px;
+  font-size:24px;
   border:none;
-  transition:0.3s;
-  z-index:5;
-  font-size:18px;
+  border-radius:40px;
+  cursor:pointer;
+  background:#0088ffaa;
+  color:white;
 }
 
-.music-btn{
-  right:25px;
-  background:#0088ff8d;
-  color:#fff;
-}
+.music-btn{ right:40px; }
+.fullscreen-btn{ left:40px; }
 
-.fullscreen-btn{
-  left:25px;
-  background:#0088ff8d;
-  color:#fff;
-}
-
-/* ================= VIDEO OVERLAY ================= */
+/* ================= VIDEO ================= */
 
 .video-overlay{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:black;
   display:none;
   justify-content:center;
@@ -236,15 +202,15 @@ body{
 
 .back-btn{
   position:absolute;
-  bottom:25px;
-  left:25px;
-  padding:15px 30px;
-  background:rgba(0,136,255,0.8);
-  color:white;
+  bottom:40px;
+  left:40px;
+  padding:20px 40px;
+  font-size:24px;
   border:none;
-  border-radius:30px;
+  border-radius:40px;
   cursor:pointer;
-  font-weight:bold;
+  background:#0088ff;
+  color:white;
 }
 </style>
 </head>
@@ -252,107 +218,76 @@ body{
 <body>
 
 <div class="top-section">
-<div class="header">
-<div class="header-content">
-<img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokiri.png" class="logo">
-<div class="header-text">
-<h1>SD NEGERI 75 PALEMBANG</h1>
-<h2><i>"SEKOLAH TEPAT UNTUK ANAK HEBAT"</i></h2>
-</div>
-<img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokanan.png" class="logo">
-</div>
-</div>
+  <div class="header-content">
+    <img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokiri.png" class="logo">
+    <div class="header-text">
+      <h1>SD NEGERI 75 PALEMBANG</h1>
+      <h2><i>"SEKOLAH TEPAT UNTUK ANAK HEBAT"</i></h2>
+    </div>
+    <img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/logokanan.png" class="logo">
+  </div>
 
-<div class="button-container">
+  <div class="button-container">
 
-<div>
-<button class="main-btn" onclick="toggleDropdown(1)">
-<h4>Kamis, 5 Maret 2026</h4>
-<p>Pembukaan</p>
-</button>
-<div class="dropdown" id="dropdown1">
-<button class="sub-btn" onclick="openVideo('https://mcnplg.github.io/pesantrenramadhan/assets/video/video1.mp4')">
-Film "Children of Heaven"
-</button>
-<button class="sub-btn">Quiz</button>
-</div>
-</div>
+    <!-- 7 Tombol -->
+    <script>
+      const days=[
+        ["Kamis, 5 Maret 2026","Pembukaan"],
+        ["Jumat, 6 Maret 2026","Lomba Azan"],
+        ["Sabtu, 7 Maret 2026","Lomba Menyanyi Islami"],
+        ["Senin, 9 Maret 2026","Lomba Puisi Islami"],
+        ["Selasa, 10 Maret 2026","Lomba Dai Cilik"],
+        ["Rabu, 11 Maret 2026","Lomba Mewarnai"],
+        ["Kamis, 12 Maret 2026","Nuzulul Qur'an"]
+      ];
 
-</div>
+      document.write(days.map((d,i)=>`
+      <div>
+        <button class="main-btn" onclick="toggleDropdown(${i})">
+          <h4>${d[0]}</h4>
+          <p>${d[1]}</p>
+        </button>
+        <div class="dropdown" id="dropdown${i}">
+          <button class="sub-btn">Video</button>
+          <button class="sub-btn">Quiz</button>
+        </div>
+      </div>
+      `).join(""));
+    </script>
+
+  </div>
 </div>
 
 <div class="foto-section">
-<div class="welcome-text">
-<div class="line1">SELAMAT DATANG</div>
-<div class="line2">PESERTA PESANTREN RAMADHAN 1447 H</div>
-<div class="line3"><i>“Membentuk Generasi Cerdas dan Berakhlak Al-Qur’an”</i></div>
-<div class="line3"><i>5 - 12 MARET 2026</i></div>
-</div>
-<img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/fotobg.png">
+  <div class="welcome-text">
+    <div class="line1">SELAMAT DATANG</div>
+    <div class="line2">PESERTA PESANTREN RAMADHAN 1447 H</div>
+    <div class="line3">5 - 12 MARET 2026</div>
+  </div>
+  <img src="https://mcnplg.github.io/pesantrenramadhan/assets/img/fotobg.png">
 </div>
 
-<audio autoplay loop>
-<source src="https://mcnplg.github.io/pesantrenramadhan/assets/audio/ramadhan.mp3" type="audio/mp3">
-</audio>
-
-<button class="music-btn" onclick="toggleMusic()">🔊 Musik</button>
-<button class="fullscreen-btn" onclick="toggleFullscreen()" id="fullscreenBtn">⛶ Fullscreen</button>
+<button class="music-btn">🔊 Musik</button>
+<button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
 
 <div class="video-overlay" id="videoOverlay">
-<video id="mainVideo" controls></video>
-<button class="back-btn" onclick="closeVideo()">⬅ Kembali</button>
+  <video controls></video>
+  <button class="back-btn" onclick="closeVideo()">⬅ Kembali</button>
 </div>
 
 <script>
-for(let i=0;i<40;i++){
-let star=document.createElement("div");
-star.className="star";
-star.style.top=Math.random()*100+"%";
-star.style.left=Math.random()*100+"%";
-star.style.animationDuration=Math.random()*3+1+"s";
-document.body.appendChild(star);
-}
-
 function toggleDropdown(num){
-let selected=document.getElementById("dropdown"+num);
-if(selected.style.display==="flex"){
-selected.style.display="none";
-}else{
-document.querySelectorAll(".dropdown").forEach(d=>d.style.display="none");
-selected.style.display="flex";
-}
+  const dd=document.getElementById("dropdown"+num);
+  document.querySelectorAll(".dropdown").forEach(d=>d.style.display="none");
+  dd.style.display="flex";
 }
 
 function toggleFullscreen(){
-const btn=document.getElementById("fullscreenBtn");
-if(!document.fullscreenElement){
-document.documentElement.requestFullscreen();
-btn.innerHTML="❎ Exit";
-}else{
-document.exitFullscreen();
-btn.innerHTML="⛶ Fullscreen";
-}
-}
-
-function toggleMusic(){
-let audio=document.querySelector("audio");
-audio.paused?audio.play():audio.pause();
-}
-
-function openVideo(src){
-const overlay=document.getElementById("videoOverlay");
-const video=document.getElementById("mainVideo");
-video.src=src;
-overlay.style.display="flex";
-video.play();
-}
-
-function closeVideo(){
-const overlay=document.getElementById("videoOverlay");
-const video=document.getElementById("mainVideo");
-video.pause();
-video.currentTime=0;
-overlay.style.display="none";
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen();
+  }else{
+    document.exitFullscreen();
+  }
 }
 </script>
 
