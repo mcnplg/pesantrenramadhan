@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pesantren Ramadhan SD Mentari</title>
+    <title>Pesantren Ramadhan SD Negeri 75 Palembang</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
@@ -19,7 +19,7 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background: radial-gradient(
@@ -29,87 +29,87 @@ body {
     #000000 100%
   );
   color: white;
-  overflow-x: hidden; /* hanya sembunyikan horizontal */
-  position: relative;
+  overflow: hidden;
 }
 
-/* ================= CONTAINER MAX WIDTH ================= */
+/* ================= TOP SECTION ================= */
 
 .top-section {
   width: 100%;
-  max-width: 1700px;   /* batasi agar tidak terlalu melebar */
+  max-width: 1800px;   /* penting untuk 4K */
   margin: 0 auto;
-  padding: 40px 40px 0 40px;
+  padding: 60px 60px 0 60px;
   position: relative;
   z-index: 3;
 }
 
-/* ================= HEADER ================= */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 60px;
   background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(15px);
-  padding: 25px 40px;
-  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  padding: 30px 40px;
+  border-radius: 25px;
 }
 
 .logo {
-  height: clamp(90px, 6vw, 150px);
+  max-height: 160px; /* diperbesar */
   object-fit: contain;
 }
 
 .header h1 {
-  font-size: clamp(36px, 3vw, 64px);
+  font-size: clamp(40px, 3vw, 70px);
   color: #ff0037;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
 }
 
 .header h2 {
-  font-size: clamp(18px, 1.5vw, 28px);
+  font-size: clamp(20px, 1.5vw, 32px);
   font-weight: 400;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
-/* ================= BUTTON CONTAINER ================= */
+/* ================= DASHBOARD ================= */
 
 .button-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* penting untuk layar sentuh */
   gap: 25px;
-  flex-wrap: wrap; /* supaya rapi jika layar lebih kecil */
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
-/* masing-masing blok tombol */
 .button-container > div {
   position: relative;
 }
 
-/* TOMBOL UTAMA - diperbesar untuk layar sentuh */
 .main-btn {
-  width: 220px;
+  width: 240px;      /* tombol lebih besar */
   height: 110px;
-  padding: 15px;
   background: #2c7be5;
   color: white;
   border: none;
-  border-radius: 15px;
+  border-radius: 18px;
   cursor: pointer;
   font-weight: bold;
   transition: 0.3s;
+  padding: 15px;
 }
 
 .main-btn h4 {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .main-btn p {
   font-size: 18px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .main-btn:hover {
@@ -117,44 +117,37 @@ body {
   transform: translateY(-8px);
 }
 
-/* ================= DROPDOWN ================= */
-
+/* Dropdown */
 .dropdown {
   position: absolute;
-  top: 110%;
+  top: 115%;
   left: 0;
   display: none;
   flex-direction: column;
   gap: 12px;
   background: rgba(0, 0, 0, 0.9);
   padding: 15px;
-  border-radius: 12px;
-  z-index: 50;
-  min-width: 220px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 .sub-btn {
-  padding: 12px;
-  font-size: 16px;
+  padding: 14px 20px;
+  font-size: 18px;
   background: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-}
-
-.sub-btn:hover {
-  background: #ddd;
 }
 
 /* ================= FOTO SECTION ================= */
 
 .foto-section {
   position: relative;
+  flex: 1;
   width: 100%;
-  height: 55vh;   /* proporsional untuk layar besar */
-  min-height: 450px;
   overflow: hidden;
-  margin-top: 30px;
 }
 
 .foto-section img {
@@ -167,61 +160,51 @@ body {
 
 .welcome-text {
   position: absolute;
-  top: 60px;
+  top: 90px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  z-index: 5;
-  padding: 10px 30px;
+  padding: 20px 40px;
+  backdrop-filter: blur(6px);
 }
 
 .welcome-text .line1 {
-  font-size: clamp(36px, 3vw, 70px);
+  font-size: clamp(50px, 4vw, 90px);
   font-weight: 800;
 }
 
 .welcome-text .line2 {
-  font-size: clamp(24px, 2vw, 45px);
+  font-size: clamp(32px, 2.5vw, 60px);
   font-weight: 700;
   margin-top: 10px;
 }
 
 .welcome-text .line3 {
-  font-size: clamp(18px, 1.5vw, 26px);
-  margin-top: 8px;
+  font-size: clamp(22px, 1.5vw, 32px);
+  margin-top: 10px;
 }
 
-/* ================= BUTTON BAWAH ================= */
+/* ================= BUTTON FIXED ================= */
 
 .music-btn,
 .fullscreen-btn {
   position: fixed;
   bottom: 30px;
-  padding: 14px 22px;
-  font-size: 18px;
+  padding: 16px 30px;
   border-radius: 40px;
+  font-size: 18px;
   cursor: pointer;
   font-weight: 600;
   border: none;
-  transition: 0.3s;
-  z-index: 100;
+  z-index: 5;
 }
 
 .music-btn {
   right: 40px;
-  background: #0088ffb3;
-  color: #fff;
 }
 
 .fullscreen-btn {
   left: 40px;
-  background: #0088ffb3;
-  color: #fff;
-}
-
-.music-btn:hover,
-.fullscreen-btn:hover {
-  transform: scale(1.1);
 }
     </style>
   </head>
@@ -440,4 +423,5 @@ body {
     </div>
   </body>
 </html>
+
 
